@@ -1,6 +1,6 @@
-# DevConnector
+# Jobportal
 
-> Small social network app built with the MERN stack. This is part of my "MERN Stack Front To Back" Udemy course
+> Jobportal Project
 
 ## Quick Start
 
@@ -36,8 +36,7 @@ module.exports = {
 
 ### Author
 
-Brad Traversy
-[Traversy Media](http://www.traversymedia.com)
+Vicky Rohilla
 
 ### Version
 
@@ -45,4 +44,4 @@ Brad Traversy
 
 ### License
 
-This project is licensed under the MIT License
+This project is licensed under the ISC License
