@@ -8,6 +8,7 @@ const serverConfig = require('./config/keys');
 const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
 const posts = require('./routes/api/posts');
+const enrollment = require('./routes/api/enrollment');
 
 
 
@@ -40,6 +41,8 @@ require('./config/passport')(passport);
 app.use('/api/users',users);
 app.use('/api/profile',profile);
 app.use('/api/posts',posts);
+app.use('/api/enrollment',enrollment);
+
 
 
 

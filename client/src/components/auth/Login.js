@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { loginUser } from '../../actions/authActions';
 import TextFieldGroup from '../common/TextFieldGroup';
 
@@ -50,39 +51,63 @@ class Login extends Component {
 
   render() {
     const { errors } = this.state;
+   
 
     return (
       <div className="login">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Log In</h1>
-              <p className="lead text-center">
-                Sign in to your account
-              </p>
-              <form onSubmit={this.onSubmit}>
-                <TextFieldGroup
-                  placeholder="Email Address"
-                  name="email"
-                  type="email"
-                  value={this.state.email}
-                  onChange={this.onChange}
-                  error={errors.email}
-                />
+     
+<div className="container">
+      <div className="row justify-content-center">
+        <div className="col-md-8 text-center">
+          <div className="card-group">
+            <div className="card p-4">
+              <div className="card-body">
+                <h1>Login</h1>
+                <p className="text-muted">Sign In to your account</p>
+                <div className="input-group mb-4">
+                <form onSubmit={this.onSubmit}>
+                    <TextFieldGroup
+                       placeholder="Email Address"
+                        name="email"
+                        type="email"
+                        value={this.state.email}
+                        onChange={this.onChange}
+                        error={errors.email}
+                       />
 
-                <TextFieldGroup
-                  placeholder="Password"
-                  name="password"
-                  type="password"
-                  value={this.state.password}
-                  onChange={this.onChange}
-                  error={errors.password}
-                />
-                <input type="submit" className="btn btn-info btn-block mt-4" />
+                     <TextFieldGroup
+                       placeholder="Password"
+                       name="password"
+                       type="password"
+                       value={this.state.password}
+                       onChange={this.onChange}
+                      error={errors.password}
+                      />
+                    <input type="submit" className="btn btn-info btn-block mt-4" />
+                    <button className="btn btn-link px-0" type="button">Forgot password?</button>
               </form>
+                </div>
+               
+              </div>
+            </div>
+            <div className="card text-white bg-primary py-5 d-md-down-none" style={{width:"44%"}}>
+              <div className="card-body text-center">
+                <div>
+                  <h2>Sign up</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                  <Link to="/register" className="btn btn-lg btn-info mr-2">
+                 Enroll Now!
+                </Link>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+
+
+
       </div>
     );
   }

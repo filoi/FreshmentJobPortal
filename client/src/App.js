@@ -28,6 +28,8 @@ import NotFound from './components/not-found/NotFound';
 
 import './App.css';
 
+
+
 // Check for token
 if (localStorage.jwtToken) {
   // Set auth token header auth

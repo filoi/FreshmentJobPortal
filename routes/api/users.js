@@ -12,12 +12,6 @@ const validateLoginInput = require('../../validation/login');
 
 const User = require('../../models/User');
 
-//@route GET api/users/test
-//@desc Test post route
-//@access Public
-router.get('/test', (req, res) => res.json({
-    msg: 'Users Works'
-}));
 
 
 //@route GET api/users/register
@@ -54,7 +48,8 @@ router.post('/register', (req, res) => {
                     name: req.body.name,
                     email: req.body.email,
                     avatar,
-                    password: req.body.password
+                    password: req.body.password,
+                    role:req.body.role
                 });
 
 
