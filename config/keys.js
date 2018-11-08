@@ -1,5 +1,6 @@
-if (process.env.NODE_ENV === 'production') {
-  module.exports = require('./keys_prod');
-} else {
-  module.exports = require('./keys_dev');
-}
+module.exports= {
+    mongoURL: 'mongodb://localhost:27017/mern-starter',
+    secretOrKey:'secret'
+  };
+
+  

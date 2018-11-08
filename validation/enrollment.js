@@ -1,14 +1,13 @@
 const Validator = require('validator');
 const isEmpty = require('./is-empty');
 
-module.exports = function validateRegisterInput(data) {
+module.exports = function validateEnrollmentInput(data) {
     console.log(data)
     let errors = {};
 
     data.name = !isEmpty(data.name) ? data.name : '';
     data.email = !isEmpty(data.email) ? data.email : '';
-    data.password = !isEmpty(data.password) ? data.password : '';
-    data.password2 = !isEmpty(data.password2) ? data.password2 : '';
+    data.mobile = !isEmpty(data.mobile) ? data.mobile : '';
 
     if (!Validator.isLength(data.name, {
             min: 2,
@@ -29,26 +28,18 @@ module.exports = function validateRegisterInput(data) {
         errors.Email = 'Email is inValid';
     }
 
-    if (Validator.isEmpty(data.password)) {
-        errors.password = 'Name Feilds is Required';
+    if (Validator.isEmpty(data.mobileno)) {
+        errors.mobileno = 'Mobile No Feild is Required';
     }
 
-    if (!Validator.isLength(data.password, {
-            min: 6,
-            max: 30
-        })) {
-        errors.password = 'password Must be Atleat 6 characters';
+    if (!Validator.isLength(data.mobileno,{
+        min:10,
+        max:10
+    })) {
+        errors.mobileno = 'Please enter 10 digit mobile number';
     }
 
-    if (Validator.isEmpty(data.password2)) {
-        errors.password2 = 'Confirm Password feild is required';
-    }
-
-    if (!Validator.equals(data.password, data.password2)) {
-        errors.password2 = 'Passwords must match';
-    }
-
-
+ 
     return {
         errors,
         isValid: isEmpty(errors)
