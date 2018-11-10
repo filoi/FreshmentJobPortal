@@ -6,6 +6,12 @@ const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
 
+const nodemailer = require('nodemailer');
+const {
+    google
+} = require("googleapis");
+const OAuth2 = google.auth.OAuth2;
+
 //Load Input Validation
 const validateEnrollmentInput = require('../../validation/enrollment');
 
@@ -48,11 +54,51 @@ router.post('/enrollmentregister', (req, res) => {
                     name: req.body.name,
                     email: req.body.email,
                     avatar,
-                    mobileno:req.body.mobileno,
-                    college:req.body.college,
-                    course:req.body.course
+                    mobileno: req.body.mobileno,
+                    college: req.body.college,
+                    course: req.body.course
                 });
 
+
+                const oauth2Client = new OAuth2(
+                    "cleintid",
+                    "client Secret key", // Client Secret
+                    "https://developers.google.com/oauthplayground" // Redirect URL
+                );
+
+                oauth2Client.setCredentials({
+                    refresh_token: "refresh token"
+                });
+
+                const accessToken = oauth2Client.refreshAccessToken()
+                    .then(res => res.credentials.access_token);
+
+
+                const smtpTransport = nodemailer.createTransport({
+                    service: "gmail",
+                    auth: {
+                        type: "OAuth2",
+                        user: "",
+                        clientId: "",
+                        clientSecret: "",
+                        refreshToken: "",
+                        accessToken: accessToken
+                    }
+                });
+
+
+                const mailOptions = {
+                    from: "rohillavicky172@gmail.com",
+                    to: req.body.email,
+                    subject: "JobPortal Payment Email: Happy to See you on Jobportal",
+                    generateTextFromHTML: true,
+                    html: "<h4>Thanks for Enrollment in Jobportal</h4><p>Please visit this link for make payment.</p><a href='http://localhost:3000/' target='_blank'>Here</a>"
+                };
+
+                smtpTransport.sendMail(mailOptions, (error, response) => {
+                    error ? console.log(error) : console.log(response);
+                    smtpTransport.close();
+                });
 
 
 

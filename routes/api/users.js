@@ -109,7 +109,8 @@ router.post('/login', (req, res) => {
                         const payload = {
                             id: user.id,
                             name: user.name,
-                            avatar: user.avatar
+                            avatar: user.avatar,
+                            role:user.role
                         }
 
                         //Sign Token
@@ -148,7 +149,8 @@ router.get('/current', passport.authenticate('jwt', {
     res.json({
         id: req.user.id,
         name: req.user.name,
-        email: req.user.email
+        email: req.user.email,
+        role:req.user.role
     });
 })
 

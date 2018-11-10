@@ -6,9 +6,8 @@ const passport = require('passport');
 
 const serverConfig = require('./config/keys');
 const users = require('./routes/api/users');
-const profile = require('./routes/api/profile');
-const posts = require('./routes/api/posts');
 const enrollment = require('./routes/api/enrollment');
+const university = require('./routes/api/university');
 
 
 
@@ -27,23 +26,16 @@ mongoose.connect(db)
         .catch(err => console.log(err));
 
 
-
-// app.get('/',(req,res)=> res.send('Hello Vicky!'));
-
 //Passport Middleware
 app.use(passport.initialize());
 
 //Passport Config
 require('./config/passport')(passport);
 
-
 //use Routes
 app.use('/api/users',users);
-app.use('/api/profile',profile);
-app.use('/api/posts',posts);
 app.use('/api/enrollment',enrollment);
-
-
+app.use('/api/university',university);
 
 
 const port  = process.env.PORT || 5000;

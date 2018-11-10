@@ -17,6 +17,24 @@ export const registerUser = (userData, history) => dispatch => {
     );
 };
 
+
+
+// Register User
+export const enrollStudent = (userData, history) => dispatch => {
+  console.log(userData);
+  axios
+    .post('/api/enrollment/enrollmentregister', userData)
+    .then(res => history.push('/email'))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
+
+
 // Login - Get User Token
 export const loginUser = userData => dispatch => {
   axios

@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { registerUser } from '../../actions/authActions';
+import { enrollStudent } from '../../actions/authActions';
 import TextFieldGroup from '../common/TextFieldGroup';
+import SelectListGroup from '../common/SelectListGroup';
 
 class Register extends Component {
   constructor() {
@@ -11,8 +12,9 @@ class Register extends Component {
     this.state = {
       name: '',
       email: '',
-      password: '',
-      password2: '',
+      mobileno:'',
+      college: '',
+      course: '',
       errors: {}
     };
 
@@ -21,9 +23,9 @@ class Register extends Component {
   }
 
   componentDidMount() {
-    if (this.props.auth.isAuthenticated) {
-      this.props.history.push('/dashboard');
-    }
+    // if (this.props.auth.isAuthenticated) {
+    //   this.props.history.push('/enrollmentEmail');
+    // }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -42,25 +44,42 @@ class Register extends Component {
     const newUser = {
       name: this.state.name,
       email: this.state.email,
-      password: this.state.password,
-      password2: this.state.password2
+      mobileno: this.state.mobileno,
+      college: this.state.college,
+      course: this.state.course
     };
 
-    this.props.registerUser(newUser, this.props.history);
+    this.props.enrollStudent(newUser, this.props.history);
   }
 
   render() {
-    const { errors } = this.state;
+    const { errors } = this.state
+    
+     // Select options for status
+     const college = [
+      { label: '* Select College', value: 0 },
+      { label: 'Deen Dandu', value: 'Deen Dandu' },
+      { label: 'Amity University', value: 'Amity University' },
+      { label: 'Sharda University', value: 'Sharda University' },
+      { label: 'Galotia University', value: 'Galotia University' }
+    ];
 
+     // Select options for status
+     const courses = [
+      { label: '* Select Course', value: 0 },
+      { label: 'MCA', value: 'MCA' },
+      { label: 'BCA', value: 'BCA' },
+      { label: 'B.Tech', value: 'B.Tech' },
+      { label: 'M.Tech', value: 'M.Tech' },
+      { label: 'B.Com', value: 'B.com' }
+    ];
+    
     return (
       <div className="register">
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Sign Up</h1>
-              <p className="lead text-center">
-                Create your  account
-              </p>
+              <h3 className="display-4 text-center">ENROLLMENT</h3>
               <form noValidate onSubmit={this.onSubmit}>
                 <TextFieldGroup
                   placeholder="Name"
@@ -76,23 +95,32 @@ class Register extends Component {
                   value={this.state.email}
                   onChange={this.onChange}
                   error={errors.email}
-                  info="This site uses Gravatar so if you want a profile image, use a Gravatar email"
                 />
-                <TextFieldGroup
-                  placeholder="Password"
-                  name="password"
-                  type="password"
-                  value={this.state.password}
+                 <TextFieldGroup
+                  placeholder="Mobile No."
+                  name="mobileno"
+                  type="text"
+                  value={this.state.mobileno}
                   onChange={this.onChange}
-                  error={errors.password}
+                  error={errors.mobileno}
                 />
-                <TextFieldGroup
-                  placeholder="Confirm Password"
-                  name="password2"
-                  type="password"
-                  value={this.state.password2}
+                <SelectListGroup
+                  placeholder="college"
+                  name="college"
+                  value={this.state.college}
                   onChange={this.onChange}
-                  error={errors.password2}
+                  options={college}
+                  error={errors.status}
+                  info="Please select College"
+                />
+                <SelectListGroup
+                  placeholder="Course"
+                  name="course"
+                  value={this.state.course}
+                  onChange={this.onChange}
+                  options={courses}
+                  error={errors.status}
+                  info="Please select Course"
                 />
                 <input type="submit" className="btn btn-info btn-block mt-4" />
               </form>
@@ -105,14 +133,12 @@ class Register extends Component {
 }
 
 Register.propTypes = {
-  registerUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
+  enrollStudent: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth,
   errors: state.errors
 });
 
-export default connect(mapStateToProps, { registerUser })(withRouter(Register));
+export default connect(mapStateToProps, { enrollStudent })(withRouter(Register));

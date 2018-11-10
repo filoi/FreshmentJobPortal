@@ -93,8 +93,10 @@ class Login extends Component {
             <div className="card text-white bg-primary py-5 d-md-down-none" style={{width:"44%"}}>
               <div className="card-body text-center">
                 <div>
-                  <h2>Sign up</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                  <h2>Enroll Now</h2>
+                  <p>Enroll Yourself for better job opportunities.</p>
+                  <p>By Enrolling , you agree to JobPortal Terms of Service and consent to our Cookie Policy and Privacy Policy.
+                  </p>
                   <Link to="/register" className="btn btn-lg btn-info mr-2">
                  Enroll Now!
                 </Link>
