@@ -2,14 +2,55 @@ img {
   width: 100%;
 }
 
-.landing {
+.navbar
+{
+  z-index:50000;
+}
+
+.logo-img {
   position: relative;
-  background: url('./img/showcase.jpg') no-repeat;
+  background: url('./img/logo-text.png') no-repeat;
   background-size: cover;
   background-position: center;
-  height: 100vh;
-  margin-top: -24px;
-  margin-bottom: -50px;
+  width:225px;
+  height:45px;
+  margin-top:7px;
+  border-radius:5px;
+  display:inline-block;
+}
+
+.card-signin
+{
+  position: relative;
+  background: url('./img/logo-text.png') no-repeat;
+  background-size: cover;
+  background-position: center;
+  width:225px;
+  height:45px;
+  margin-top:7px;
+  border-radius:5px;
+  display:inline-block;
+}
+
+footer
+{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  padding:5px;
+  font-size:13px;
+}
+
+.landing {
+  position: fixed;
+  top:0;
+  left:0;
+  background: url('./img/wallpaper.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  width:100%;
 }
 
 .landing-inner {
@@ -17,7 +58,7 @@ img {
 }
 
 .dark-overlay {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
   top: 0;
   left: 0;

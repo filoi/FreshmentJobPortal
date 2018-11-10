@@ -14,18 +14,15 @@ class Landing extends Component {
     return (
       <div className="landing">
         <div className="dark-overlay landing-inner text-light">
-            <div className="row">
+            <div className="row m-0">
               <div className="col-md-12 text-center">
-                <h1 className="display-3 mb-4">Job Portal</h1>
                 <p className="lead">
                   {' '}
-                  Create a Student profile/portfolio
                 </p>
-                <hr />
-                <Link to="/register" className="btn btn-lg btn-info mr-2">
-                  Sign Up
+                <Link to="/register" className="btn btn-lg btn-success col-md-2 p-3 my-3 mx-1">
+                  Enroll
                 </Link>
-                <Link to="/login" className="btn btn-lg btn-light">
+                <Link to="/login" className="btn btn-lg btn-light   col-md-2 p-3 my-3 mx-1">
                   Login
                 </Link>
               </div>
