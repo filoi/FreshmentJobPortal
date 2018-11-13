@@ -122,6 +122,7 @@ class Register extends Component {
                   error={errors.status}
                   info=""
                 />
+                
                 <input type="submit" className="btn btn-info btn-block mt-4" />
               </form>
             </div>
