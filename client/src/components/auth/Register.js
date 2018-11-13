@@ -75,11 +75,11 @@ class Register extends Component {
     ];
     
     return (
-      <div className="register">
+      <div className="register landing ">
         <div className="container">
           <div className="row">
-            <div className="col-md-8 m-auto">
-              <h3 className="display-4 text-center">ENROLLMENT</h3>
+            <div className="col-md-5 m-auto glassy">
+              <h1 style={{ textAlign: 'center' }}>Student Enrollment</h1>
               <form noValidate onSubmit={this.onSubmit}>
                 <TextFieldGroup
                   placeholder="Name"
@@ -111,7 +111,7 @@ class Register extends Component {
                   onChange={this.onChange}
                   options={college}
                   error={errors.status}
-                  info="Please select College"
+                  info=""
                 />
                 <SelectListGroup
                   placeholder="Course"
@@ -120,7 +120,7 @@ class Register extends Component {
                   onChange={this.onChange}
                   options={courses}
                   error={errors.status}
-                  info="Please select Course"
+                  info=""
                 />
                 <input type="submit" className="btn btn-info btn-block mt-4" />
               </form>

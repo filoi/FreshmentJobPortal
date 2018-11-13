@@ -41,7 +41,7 @@ class Navbar extends Component {
     );
 
     const guestLinks = (
-      <ul className="navbar-nav ml-auto">
+      <ul className="navbar-nav ml-auto hidden">
         <li className="nav-item">
           <Link className="nav-link" to="/register">
             Enroll
