@@ -1,31 +1,31 @@
 const Validator = require('validator');
 const isEmpty = require('./is-empty');
 
-module.exports = function validateUniversityInput(data) {
+module.exports = function validateCollegeInput(data) {
     console.log(data)
     let errors = {};
 
-    data.university = !isEmpty(data.university) ? data.university : '';
+    data.college = !isEmpty(data.college) ? data.college : '';
     data.email = !isEmpty(data.email) ? data.email : '';
-    data.mobileno = !isEmpty(data.mobileno) ? data.mobileno : '';
+    data.mobilen = !isEmpty(data.mobile) ? data.mobileno : '';
 
-    if (!Validator.isLength(data.university, {
+    if (!Validator.isLength(data.college, {
             min: 2,
             max: 30
         })) {
-        errors.university = 'Name must be between 2 and 30 characters';
+        errors.college = 'Name must be between 2 and 30 characters';
     }
 
-    if (Validator.isEmpty(data.university)) {
-        errors.university = 'Name Feild is Required';
+    if (Validator.isEmpty(data.college)) {
+        errors.college = 'Name Feild is Required';
     }
 
     if (Validator.isEmpty(data.email)) {
-        errors.email = 'Email Feild is Required';
+        errors.Email = 'Email Feild is Required';
     }
 
     if (!Validator.isEmail(data.email)) {
-        errors.email = 'Email is inValid';
+        errors.Email = 'Email is inValid';
     }
 
     if (Validator.isEmpty(data.mobileno)) {

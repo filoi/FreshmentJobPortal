@@ -12,17 +12,20 @@ class Landing extends Component {
 
   render() {
     return (
-      <div className="landing">
+      <div className="landing container-fluid">
         <div className="dark-overlay landing-inner text-light">
-            <div className="row m-0">
-              <div className="col-md-12 text-center">
+            <div className="row">
+              <div className="col-sm-12 text-center">
+                <h1 className="display-3">Job Portal</h1>
                 <p className="lead">
                   {' '}
+                  Create a Student profile/portfolio
                 </p>
-                <Link to="/register" className="btn btn-lg btn-success col-md-2 p-3 my-3 mx-1">
-                  Enroll
+                <hr />
+                <Link to="/register" className="btn btn-lg btn-info mr-2">
+                  Sign Up
                 </Link>
-                <Link to="/login" className="btn btn-lg btn-light   col-md-2 p-3 my-3 mx-1">
+                <Link to="/login" className="btn btn-lg btn-light">
                   Login
                 </Link>
               </div>

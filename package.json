@@ -13,7 +13,6 @@
   "author": "Vicky Rohilla",
   "license": "ISC",
   "dependencies": {
-    "@coreui/coreui": "^2.0.25",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "chalk": "^2.4.1",

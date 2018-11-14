@@ -41,10 +41,10 @@ class Navbar extends Component {
     );
 
     const guestLinks = (
-      <ul className="navbar-nav ml-auto hidden">
+      <ul className="navbar-nav ml-auto">
         <li className="nav-item">
           <Link className="nav-link" to="/register">
-            Enroll
+            Enroll Now
           </Link>
         </li>
         <li className="nav-item">
@@ -59,7 +59,7 @@ class Navbar extends Component {
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
         <div className="container">
           <Link className="navbar-brand" to="/">
-            <div className ='logo-img'></div>
+            Jobportal
           </Link>
           <button
             className="navbar-toggler"

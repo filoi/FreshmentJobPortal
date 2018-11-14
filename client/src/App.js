@@ -16,7 +16,10 @@ import Landing from './components/layout/Landing';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Dashboard from './components/dashboard/Dashboard';
-import Email from './components/enrollmentEmail/enrollmentEmail'
+import Email from './components/enrollmentEmail/enrollmentEmail';
+import University from './components/university/university';
+import College from './components/college/college';
+import Course from './components/courses/courses';
 
 import NotFound from './components/not-found/NotFound';
 
@@ -56,6 +59,15 @@ class App extends Component {
               <Route exact path="/email" component={Email} />
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/create-university" component={University} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/create-college" component={College} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/create-course" component={Course} />
               </Switch>
               <Route exact path="/not-found" component={NotFound} />
             </div>

@@ -56,17 +56,16 @@ class Login extends Component {
     return (
       <div className="login">
      
-<div className="landing">
-  <div className="container py-2">
-      <div className="row justify-content-center py-5">
-        <div className="col-md-8 text-center my-5 ">
+<div className="container">
+      <div className="row justify-content-center">
+        <div className="col-md-8 text-center">
           <div className="card-group">
             <div className="card p-4">
               <div className="card-body">
                 <h1>Login</h1>
                 <p className="text-muted">Sign In to your account</p>
                 <div className="input-group mb-4">
-                <form onSubmit={this.onSubmit} style={{width: 100 + '%' }}>
+                <form onSubmit={this.onSubmit}>
                     <TextFieldGroup
                        placeholder="Email Address"
                         name="email"
@@ -108,7 +107,7 @@ class Login extends Component {
         </div>
       </div>
     </div>
-    </div>
+
 
 
       </div>

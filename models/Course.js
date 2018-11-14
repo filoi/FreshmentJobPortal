@@ -1,18 +1,14 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const UniversitySchema = new Schema({
+const CourseSchema = new Schema({
     name: {
         type: String,
         required: true
     },
-    mobileno: {
+    coursecode: {
         type: String,
-        required: true
-    },
-    email: {
-        type: String,
-        required: true,
+        required:true
     },
     date: {
         type: Date,
@@ -20,4 +16,4 @@ const UniversitySchema = new Schema({
     }
 });
 
-module.exports = University = mongoose.model('university', UniversitySchema);
+module.exports = Course = mongoose.model('courses', CourseSchema);

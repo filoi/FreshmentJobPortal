@@ -61,8 +61,8 @@ router.post('/enrollmentregister', (req, res) => {
 
 
                 const oauth2Client = new OAuth2(
-                    "cleintid",
-                    "client Secret key", // Client Secret
+                    "312084291582-ush1bb4giajhh7lrq8okvv3jiujh75rc.apps.googleusercontent.com",
+                    "gimnT4tA9oDbn1X_TNPP9qSh", // Client Secret
                     "https://developers.google.com/oauthplayground" // Redirect URL
                 );
 
@@ -78,10 +78,10 @@ router.post('/enrollmentregister', (req, res) => {
                     service: "gmail",
                     auth: {
                         type: "OAuth2",
-                        user: "",
-                        clientId: "",
-                        clientSecret: "",
-                        refreshToken: "",
+                        user: "rohillavicky172@gmail.com",
+                        clientId: "312084291582-ush1bb4giajhh7lrq8okvv3jiujh75rc.apps.googleusercontent.com",
+                        clientSecret: "gimnT4tA9oDbn1X_TNPP9qSh",
+                        refreshToken: "1/n4ce4EHlBSsOoHsLcj3LFme7EF6v8ox1TaGq7O2lk1k",
                         accessToken: accessToken
                     }
                 });

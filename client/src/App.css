@@ -2,55 +2,14 @@ img {
   width: 100%;
 }
 
-.navbar
-{
-  z-index:50000;
-}
-
-.logo-img {
-  position: relative;
-  background: url('./img/logo-text.png') no-repeat;
-  background-size: cover;
-  background-position: center;
-  width:225px;
-  height:45px;
-  margin-top:7px;
-  border-radius:5px;
-  display:inline-block;
-}
-
-.card-signin
-{
-  position: relative;
-  background: url('./img/logo-text.png') no-repeat;
-  background-size: cover;
-  background-position: center;
-  width:225px;
-  height:45px;
-  margin-top:7px;
-  border-radius:5px;
-  display:inline-block;
-}
-
-footer
-{
-  position:fixed;
-  bottom:0;
-  left:0;
-  width:100%;
-  padding:5px;
-  font-size:13px;
-}
-
 .landing {
-  position: fixed;
-  top:0;
-  left:0;
-  background: url('./img/wallpaper.jpg') no-repeat;
+  position: relative;
+  background: url('./img/showcase.jpg') no-repeat;
   background-size: cover;
   background-position: center;
-  height: 100%;
-  width:100%;
+  height: 100vh;
+  margin-top: -24px;
+  margin-bottom: -50px;
 }
 
 .landing-inner {
@@ -58,7 +17,7 @@ footer
 }
 
 .dark-overlay {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   position: absolute;
   top: 0;
   left: 0;
@@ -77,17 +36,4 @@ footer
 
 .form-control::placeholder {
   color: #bbb !important;
-}
-
-.hidden
-{
-  display:none;
-}
-
-.glassy
-{
-  border-radius:5px;
-  background:rgba(255, 255, 255, 1) !important;
-  padding:20px;
-  margin-top:100px !important;
 }

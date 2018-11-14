@@ -1,20 +1,20 @@
 const express = require('express');
 const router = express.Router();
 //Load Input Validation
-const validateUniversityInput = require('../../validation/university');
-const University = require('../../models/University');
+const validateCollegeInput = require('../../validation/college');
+const College = require('../../models/College');
 
 
 
-//@route GET api/university/register
+//@route GET api/college/register
 //@desc Register route
 //@access Public
-router.post('/universityregister', (req, res) => {
+router.post('/collegeregister', (req, res) => {
     console.log(req.body);
     const {
         errors,
         isValid
-    } = validateUniversityInput(req.body);
+    } = validateCollegeInput(req.body);
 
     //check validation
     if (!isValid) {
@@ -22,26 +22,24 @@ router.post('/universityregister', (req, res) => {
     }
 
 
-    University.findOne({
+    College.findOne({
             email: req.body.email
         })
-        .then(university => {
-            if (university) {
+        .then(college => {
+            if (college) {
                 return res.status(400).json({
-                    email: 'University Already exits'
+                    email: 'Email Already exits'
                 });
             } else {
-
-                const newUniversity = new University({
-                    name: req.body.university,
+                const newCollege = new College({
+                    name: req.body.college,
                     email: req.body.email,
                     mobileno:req.body.mobileno
                 });
 
-                console.log(newUniversity)
 
-                newUniversity.save()
-                    .then(university => res.json(university))
+                newCollege.save()
+                    .then(college => res.json(college))
                     .catch(err => console.log(err));
 
 
@@ -50,24 +48,24 @@ router.post('/universityregister', (req, res) => {
 })
 
 
-//@route  GET api/university/all
+//@route  GET api/college/all
 //@desc  Get all  university
 //@access Public
 router.get('/all', (req, res) => {
 
     const errors = {};
 
-    University.find()
-        .then(university => {
-            if (!university) {
-                errors.noprofiles = 'No University exist';
+    College.find()
+        .then(college => {
+            if (!college) {
+                errors.noprofiles = 'No College exist';
                 return res.status(404).json(errors);
             }
 
-            res.json(university);
+            res.json(college);
         })
         .catch(err => res.status(404).json({
-            university : 'University Dosent exits'
+            college : 'college Dosent exits'
         }));
 })
 

@@ -8,6 +8,8 @@ const serverConfig = require('./config/keys');
 const users = require('./routes/api/users');
 const enrollment = require('./routes/api/enrollment');
 const university = require('./routes/api/university');
+const college = require('./routes/api/college');
+const course = require('./routes/api/course');
 
 
 
@@ -36,6 +38,8 @@ require('./config/passport')(passport);
 app.use('/api/users',users);
 app.use('/api/enrollment',enrollment);
 app.use('/api/university',university);
+app.use('/api/college',college);
+app.use('/api/course',course);
 
 
 const port  = process.env.PORT || 5000;
