@@ -57,7 +57,7 @@ class Register extends Component {
     
      // Select options for status
      const college = [
-      { label: '* Select College', value: 0 },
+      { label: ' - Select College - ', value: 0 },
       { label: 'Deen Dandu', value: 'Deen Dandu' },
       { label: 'Amity University', value: 'Amity University' },
       { label: 'Sharda University', value: 'Sharda University' },
@@ -66,7 +66,7 @@ class Register extends Component {
 
      // Select options for status
      const courses = [
-      { label: '* Select Course', value: 0 },
+      { label: ' - Select Course -', value: 0 },
       { label: 'MCA', value: 'MCA' },
       { label: 'BCA', value: 'BCA' },
       { label: 'B.Tech', value: 'B.Tech' },
@@ -75,11 +75,12 @@ class Register extends Component {
     ];
     
     return (
-      <div className="register">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-8 m-auto">
-              <h3 className="display-4 text-center">ENROLLMENT</h3>
+      <div className="register  py-5">
+        <div className="landing"></div>
+        <div className="dark-overlay">
+          <div className="row py-5">
+            <div className="col-md-4 m-auto my-5 glassy">
+              <h1 style={{ textAlign: 'center' }}>Student Enrollment</h1>
               <form noValidate onSubmit={this.onSubmit}>
                 <TextFieldGroup
                   placeholder="Name"
@@ -111,6 +112,7 @@ class Register extends Component {
                   onChange={this.onChange}
                   options={college}
                   error={errors.status}
+                  info=""
                 />
                 <SelectListGroup
                   placeholder="Course"
@@ -119,8 +121,10 @@ class Register extends Component {
                   onChange={this.onChange}
                   options={courses}
                   error={errors.status}
+                  info=""
                 />
-                <input type="submit" className="btn btn-info btn-block mt-4" />
+                
+                <input type="submit" className="btn btn-info btn-block mt-4 p-3" />
               </form>
             </div>
           </div>

@@ -17,19 +17,19 @@ module.exports = function validateUniversityInput(data) {
     }
 
     if (Validator.isEmpty(data.university)) {
-        errors.university = 'Name Feild is Required';
+        errors.university = 'Name field is Required';
     }
 
     if (Validator.isEmpty(data.email)) {
-        errors.email = 'Email Feild is Required';
+        errors.email = 'Email field is Required';
     }
 
     if (!Validator.isEmail(data.email)) {
-        errors.email = 'Email is inValid';
+        errors.email = 'Email is invalid';
     }
 
     if (Validator.isEmpty(data.mobileno)) {
-        errors.mobileno = 'Mobile No Feild is Required';
+        errors.mobileno = 'Mobile No field is Required';
     }
 
     if (!Validator.isLength(data.mobileno,{
