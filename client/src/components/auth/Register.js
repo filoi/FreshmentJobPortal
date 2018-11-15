@@ -80,7 +80,7 @@ class Register extends Component {
         <div className="dark-overlay">
           <div className="row py-5">
             <div className="col-md-4 m-auto my-5 glassy">
-              <h1 style={{ textAlign: 'center' }}>Student Enrollment</h1>
+              <h1 style={{ textAlign: 'center' }}><b>Student Enrollment</b></h1>
               <form noValidate onSubmit={this.onSubmit}>
                 <TextFieldGroup
                   placeholder="Name"

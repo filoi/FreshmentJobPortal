@@ -64,7 +64,7 @@ class Login extends Component {
           <div className="card-group">
             <div className="card p-4">
               <div className="card-body">
-                <h1>Login</h1>
+                <h1><b>Login</b></h1>
                 <p className="text-muted">Sign In to your account</p>
                 <div className="input-group mb-4">
                 <form onSubmit={this.onSubmit} style={{width: 100 + '%' }}>
