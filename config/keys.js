@@ -1,5 +1,5 @@
 module.exports= {
-    mongoURL: 'mongodb://localhost:27017/filoi_job_portal',
+    mongoURL: 'mongodb://localhost:27017/jobportal',
     secretOrKey:'secret'
   };
 

@@ -7,7 +7,7 @@ export const createUniversity = (userData, history) => dispatch => {
     console.log(userData)
   axios
     .post('/api/university/universityregister', userData)
-    .then(res => history.push('/dashboard'))
+    .then(res => history.push('/main/dashboard'))
     .catch(err =>
       dispatch({
         type: GET_ERRORS,

@@ -1,30 +1,22 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
-import { setCurrentUser, logoutUser } from './actions/authActions';
-
-
-import { Provider } from 'react-redux';
-import store from './store';
+import {setCurrentUser, logoutUser} from './actions/authActions';
 
 import PrivateRoute from './components/common/PrivateRoute';
 
-import Navbar from './components/layout/Navbar';
-import Footer from './components/layout/Footer';
-import Sidebar from './components/layout/Sidebar';
-import Landing from './components/layout/Landing';
-import Register from './components/auth/Register';
-import Login from './components/auth/Login';
-import Dashboard from './components/dashboard/Dashboard';
-import Email from './components/enrollmentEmail/enrollmentEmail';
-import University from './components/university/university';
-import College from './components/college/college';
-import Course from './components/courses/courses';
+import {Provider}  from 'react-redux';
+import store from './store';
 
-import NotFound from './components/not-found/NotFound';
 
-import './App.css';
+import './App.scss';
+
+// Containers
+import { DefaultLayout } from './containers';
+// Pages
+import { Login, Page404, Page500, Register } from './views/Pages';
+
 
 // Check for token
 if (localStorage.jwtToken) {
@@ -46,35 +38,24 @@ if (localStorage.jwtToken) {
   }
 }
 
+
+
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Router>
-          <div className="App">
-            <Navbar />
-            <Route exact path="/" component={Landing} />
-            <div className="container">
-              <Route exact path="/register" component={Register} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/email" component={Email} />
-              <Switch>
-                <PrivateRoute exact path="/dashboard" component={Dashboard} />
-              </Switch>
-              <Switch>
-                <PrivateRoute exact path="/create-university" component={University} />
-              </Switch>
-              <Switch>
-                <PrivateRoute exact path="/create-college" component={College} />
-              </Switch>
-              <Switch>
-                <PrivateRoute exact path="/create-course" component={Course} />
-              </Switch>
-              <Route exact path="/not-found" component={NotFound} />
-            </div>
-            <Footer />
-          </div>
-        </Router>
+         <BrowserRouter>
+           <div className="App">
+                <Route exact path="/login" name="Login Page" component={Login} />
+                    <Route exact path="/register" name="Register Page" component={Register} />
+                    <Route exact path="/404" name="Page 404" component={Page404} />
+                    <Route exact path="/500" name="Page 500" component={Page500} />
+                      <Switch>
+                          <PrivateRoute path="/main" name="Home" component={DefaultLayout} />
+                     </Switch>
+               </div>  
+      </BrowserRouter> 
+
       </Provider>
     );
   }

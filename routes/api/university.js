@@ -35,7 +35,9 @@ router.post('/universityregister', (req, res) => {
                 const newUniversity = new University({
                     name: req.body.university,
                     email: req.body.email,
-                    mobileno:req.body.mobileno
+                    mobileno:req.body.mobileno,
+                    description:req.body.description,
+                    affiliated:req.body.affiliated
                 });
 
                 console.log(newUniversity)
