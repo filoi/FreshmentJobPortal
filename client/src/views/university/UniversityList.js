@@ -60,6 +60,12 @@ class UniversityList extends Component {
     return (
       <div className="dashboard">
         {dashboardContent}
+
+        <div className="floating-icon-cont">
+          <div className="floating-icon-main floating-icon">
+            <span className="fa fa-plus"></span>
+          </div>
+        </div>
       </div>
     );
   }

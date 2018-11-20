@@ -15,21 +15,21 @@ const Dashboard = Loadable({
 });
 
 const university = Loadable({
-  loader:() => import('./views/university/UniversityList'),
+  loader:() => import('./views/University/UniversityList'),
   loading: Loading
 })
 
 const adduniversity = Loadable({
-  loader:() => import('./views/university/university'),
+  loader:() => import('./views/University/university'),
   loading: Loading
 })
 const college = Loadable({
-  loader:() => import('./views/college/college'),
+  loader:() => import('./views/College/college'),
   loading: Loading
 })
 
 const courses = Loadable({
-  loader:() => import('./views/courses/courses'),
+  loader:() => import('./views/Course/courses'),
   loading: Loading
 })
 
