@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
 import { loginUser } from '../../../actions/authActions'
-
+import { ReCAPTCHA } from "react-google-recaptcha";
 
 
 class Login extends Component {
@@ -88,7 +88,11 @@ class Login extends Component {
                             </InputGroupAddon>
                             <Input type="password" placeholder="Password" autoComplete="current-password" name="password" type="password" value={this.state.password} onChange={this.onChange} />
                           </InputGroup>
-                          <Row>
+                           <ReCAPTCHA
+                            sitekey="6LcI4nsUAAAAAI8CBxP4mY_q5n6g0OVJuKnUPcVJ"/>
+
+                            <div class="g-recaptcha" data-sitekey="6LcI4nsUAAAAAI8CBxP4mY_q5n6g0OVJuKnUPcVJ"></div>
+                          <Row className="my-2">
                             <Col xs="6">
                               <Button type="submit" className="btn btn-info btn-block" >Login</Button>
                             </Col>
