@@ -10,19 +10,19 @@ export default {
       name:'pages'
     },
     {
-      name:'Univeristies',
+      name:'Universities',
       url:'/main/universities',
       icon:'icon-graduation'
     },
     {
-      name:'College',
+      name:'Colleges',
       url:'/main/college',
-      icon:'icon-drop'
+      icon:'icon-graduation'
     },
     {
-      name:'Course',
+      name:'Courses',
       url:'/main/courses',
-      icon:'icon-drop'
+      icon:'icon-book-open'
     }
   ],
 };
