@@ -15,7 +15,7 @@ import './App.scss';
 // Containers
 import { DefaultLayout } from './containers';
 // Pages
-import { Login, Page404, Page500, Register } from './views/Pages';
+import { Landing, Login, Page404, Page500, Register } from './views/Pages';
 
 
 // Check for token
@@ -46,14 +46,17 @@ class App extends Component {
       <Provider store={store}>
          <BrowserRouter>
            <div className="App">
+              <div className="container">
+                <Route exact path="/" name="Landing Page" component={Landing} />
+                <Route exact path="/register" name="Register Page" component={Register} />
                 <Route exact path="/login" name="Login Page" component={Login} />
-                    <Route exact path="/register" name="Register Page" component={Register} />
-                    <Route exact path="/404" name="Page 404" component={Page404} />
-                    <Route exact path="/500" name="Page 500" component={Page500} />
-                      <Switch>
-                          <PrivateRoute path="/main" name="Home" component={DefaultLayout} />
-                     </Switch>
-               </div>  
+                <Route exact path="/404" name="Page 404" component={Page404} />
+                <Route exact path="/500" name="Page 500" component={Page500} />
+                  <Switch>
+                      <PrivateRoute path="/main" name="Home" component={DefaultLayout} />
+                  </Switch>
+              </div>
+            </div>  
       </BrowserRouter> 
 
       </Provider>

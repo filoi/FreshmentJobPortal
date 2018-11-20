@@ -1,68 +1,153 @@
 import React, { Component } from 'react';
-import { Button, Card, CardBody, CardFooter, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { enrollStudent } from '../../../actions/authActions';
+import TextFieldGroup from '../../../components/common/TextFieldGroup';
+import SelectListGroup from '../../../components/common/SelectListGroup';
 
 class Register extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: '',
+      email: '',
+      mobileno:'',
+      college: '',
+      course: '',
+      errors: {}
+    };
+
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    // if (this.props.auth.isAuthenticated) {
+    //   this.props.history.push('/enrollmentEmail');
+    // }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
+  }
+
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+
+    const newUser = {
+      name: this.state.name,
+      email: this.state.email,
+      mobileno: this.state.mobileno,
+      college: this.state.college,
+      course: this.state.course
+    };
+
+    this.props.enrollStudent(newUser, this.props.history);
+  }
+
   render() {
+    const { errors } = this.state
+    
+     // Select options for status
+     const college = [
+      { label: ' - Select College - ', value: 0 },
+      { label: 'Deen Dandu', value: 'Deen Dandu' },
+      { label: 'Amity University', value: 'Amity University' },
+      { label: 'Sharda University', value: 'Sharda University' },
+      { label: 'Galotia University', value: 'Galotia University' }
+    ];
+
+     // Select options for status
+     const courses = [
+      { label: ' - Select Course -', value: 0 },
+      { label: 'MCA', value: 'MCA' },
+      { label: 'BCA', value: 'BCA' },
+      { label: 'B.Tech', value: 'B.Tech' },
+      { label: 'M.Tech', value: 'M.Tech' },
+      { label: 'B.Com', value: 'B.com' }
+    ];
+    
     return (
-      <div className="app flex-row align-items-center">
-        <Container>
-          <Row className="justify-content-center">
-            <Col md="6">
-              <Card className="mx-4">
-                <CardBody className="p-4">
-                  <Form>
-                    <h1>Register</h1>
-                    <p className="text-muted">Create your account</p>
-                    <InputGroup className="mb-3">
-                      <InputGroupAddon addonType="prepend">
-                        <InputGroupText>
-                          <i className="icon-user"></i>
-                        </InputGroupText>
-                      </InputGroupAddon>
-                      <Input type="text" placeholder="Username" autoComplete="username" />
-                    </InputGroup>
-                    <InputGroup className="mb-3">
-                      <InputGroupAddon addonType="prepend">
-                        <InputGroupText>@</InputGroupText>
-                      </InputGroupAddon>
-                      <Input type="text" placeholder="Email" autoComplete="email" />
-                    </InputGroup>
-                    <InputGroup className="mb-3">
-                      <InputGroupAddon addonType="prepend">
-                        <InputGroupText>
-                          <i className="icon-lock"></i>
-                        </InputGroupText>
-                      </InputGroupAddon>
-                      <Input type="password" placeholder="Password" autoComplete="new-password" />
-                    </InputGroup>
-                    <InputGroup className="mb-4">
-                      <InputGroupAddon addonType="prepend">
-                        <InputGroupText>
-                          <i className="icon-lock"></i>
-                        </InputGroupText>
-                      </InputGroupAddon>
-                      <Input type="password" placeholder="Repeat password" autoComplete="new-password" />
-                    </InputGroup>
-                    <Button color="success" block>Create Account</Button>
-                  </Form>
-                </CardBody>
-                <CardFooter className="p-4">
-                  <Row>
-                    <Col xs="12" sm="6">
-                      <Button className="btn-facebook" block><span>facebook</span></Button>
-                    </Col>
-                    <Col xs="12" sm="6">
-                      <Button className="btn-twitter" block><span>twitter</span></Button>
-                    </Col>
-                  </Row>
-                </CardFooter>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
+      <div className="register  py-5">
+        <div className="landing"></div>
+        <div className="dark-overlay">
+          <div className="row">
+            <div className="col-md-4 m-auto glassy">
+              <h1 style={{ textAlign: 'center' }}><b>Student Enrollment</b></h1>
+              <form noValidate onSubmit={this.onSubmit}>
+                <TextFieldGroup
+                  placeholder="Name"
+                  name="name"
+                  value={this.state.name}
+                  onChange={this.onChange}
+                  error={errors.name}
+                />
+                <TextFieldGroup
+                  placeholder="Email"
+                  name="email"
+                  type="email"
+                  value={this.state.email}
+                  onChange={this.onChange}
+                  error={errors.email}
+                />
+                 <TextFieldGroup
+                  placeholder="Mobile No."
+                  name="mobileno"
+                  type="text"
+                  value={this.state.mobileno}
+                  onChange={this.onChange}
+                  error={errors.mobileno}
+                />
+                <SelectListGroup
+                  placeholder="college"
+                  name="college"
+                  value={this.state.college}
+                  onChange={this.onChange}
+                  options={college}
+                  error={errors.status}
+                  info=""
+                />
+                <SelectListGroup
+                  placeholder="Course"
+                  name="course"
+                  value={this.state.course}
+                  onChange={this.onChange}
+                  options={courses}
+                  error={errors.status}
+                  info=""
+                />
+
+                <input type="submit" className="btn btn-info btn-block mt-4 p-3" />
+                <Link to="/login" className="btn btn-success btn-block mt-2 p-3">
+                  I already have an account
+                </Link>
+              </form>
+            </div>
+          </div>
+        </div>
+        <footer className="bg-dark text-white text-center">
+          <span className="ml-auto">Developed by <a target="_blank" href="http://filoi.in">Filoi</a></span>
+        </footer>
       </div>
     );
   }
 }
 
-export default Register;
+Register.propTypes = {
+  enrollStudent: PropTypes.func.isRequired,
+  errors: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  errors: state.errors
+});
+
+export default connect(mapStateToProps, { enrollStudent })(withRouter(Register));
