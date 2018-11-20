@@ -116,7 +116,7 @@ class Login extends Component {
                 </Col>
               </Row>
             </Container>
-            <footer className="bg-dark text-white text-center">
+            <footer className="bg-dark text-white text-center home-footer">
               <span className="ml-auto">Developed by <a target="_blank" href="http://filoi.in">Filoi</a></span>
             </footer>
           </div>
