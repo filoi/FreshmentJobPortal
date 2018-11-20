@@ -1,12 +1,16 @@
 import React ,{Component} from 'react';
+import { AppAsideToggler } from '@coreui/react';
 
 class UniversitiesItem extends Component{
+    showProfile(){
+        AppAsideToggler.asideToggle();
+    };
 
     render(){
         const {university} = this.props;
         console.log(university)
         return(
-            <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12 data-block" onclick="alert()">
+            <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12 data-block">
                 <div className="card">
                 <div className="card-block p-1 clearfix">
                     <i className="fa fa-user bg-info p-2 font-2xl mr-1 float-left"></i>

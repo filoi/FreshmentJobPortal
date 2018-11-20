@@ -26,7 +26,7 @@ class UniversityList extends Component {
       ));
     }
     else{
-      university = <tr><td>No University found</td></tr>;
+      university = <div className="m-3">No University found</div>;
     }
 
       // Check role of the user 
