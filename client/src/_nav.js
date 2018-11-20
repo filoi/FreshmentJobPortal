@@ -3,20 +3,16 @@ export default {
     {
       name: 'Dashboard',
       url: '/main/dashboard',
-      icon: 'icon-speedometer',
-      badge: {
-        variant: 'info',
-        text: 'NEW',
-      },
+      icon: 'icon-speedometer'
     },
     {
       title:true,
       name:'pages'
     },
     {
-      name:'Univeristy',
-      url:'/main/university',
-      icon:'icon-drop'
+      name:'Univeristies',
+      url:'/main/universities',
+      icon:'icon-graduation'
     },
     {
       name:'College',

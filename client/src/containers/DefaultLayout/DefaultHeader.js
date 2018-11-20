@@ -3,7 +3,7 @@ import { Badge, DropdownItem, DropdownMenu, DropdownToggle, Nav, NavItem, NavLin
 import PropTypes from 'prop-types';
 
 import { AppAsideToggler, AppHeaderDropdown, AppNavbarBrand, AppSidebarToggler } from '@coreui/react';
-import logo from '../../assets/img/brand/logo.svg';
+import logo from '../../img/logo-text.png';
 import sygnet from '../../assets/img/brand/sygnet.svg';
 import admin from '../../assets/admin.png';
 
@@ -11,9 +11,6 @@ import admin from '../../assets/admin.png';
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {logoutUser} from '../../actions/authActions';
-
-
-
 
 
 class DefaultHeader extends Component {
@@ -31,18 +28,12 @@ class DefaultHeader extends Component {
       <React.Fragment>
         <AppSidebarToggler className="d-lg-none" display="md" mobile />
         <AppNavbarBrand
-          full={{ src: logo, width: 89, height: 25, alt: 'CoreUI Logo' }}
-          minimized={{ src: sygnet, width: 30, height: 30, alt: 'CoreUI Logo' }}
+          full={{ src: logo, width: 150, height: 30, alt: 'Job Portal' }}
+          minimized={{ src: sygnet, width: 30, height: 30, alt: 'Job Portal' }}
         />
         <AppSidebarToggler className="d-md-down-none" display="lg" />
 
-        <Nav className="d-md-down-none" navbar>
-          <NavItem className="px-3">
-            <Link  to="/main/dashboard">Dashboard </Link>
-          </NavItem>
-        </Nav>
         <Nav className="ml-auto" navbar>
-        
           <AppHeaderDropdown direction="down">
             <DropdownToggle nav>
               <img src={admin} className="img-avatar" alt="admin@jobportal.com" />
