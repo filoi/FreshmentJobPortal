@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import { Badge, DropdownItem, DropdownMenu, DropdownToggle, Nav, NavItem, NavLink } from 'reactstrap';
+import { DropdownItem, DropdownMenu, DropdownToggle, Nav} from 'reactstrap';
 import PropTypes from 'prop-types';
 
-import { AppAsideToggler, AppHeaderDropdown, AppNavbarBrand, AppSidebarToggler } from '@coreui/react';
+import {  AppHeaderDropdown, AppNavbarBrand, AppSidebarToggler } from '@coreui/react';
 import logo from '../../img/logo-text.png';
 import sygnet from '../../assets/img/brand/sygnet.svg';
 import admin from '../../assets/admin.png';
 
-
-import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {logoutUser} from '../../actions/authActions';
 
@@ -22,7 +20,7 @@ class DefaultHeader extends Component {
     
   render() {
 
-    const {isAuthenicated, user} = this.props.auth;
+    // const {isAuthenicated, user} = this.props.auth;
 
     return (
       <React.Fragment>

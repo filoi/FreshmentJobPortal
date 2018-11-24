@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TextFieldGroup from '../../components/common/TextFieldGroup';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createUniversity } from '../../actions/universityActions';
@@ -13,7 +14,8 @@ class University extends Component {
       email:'',
       description:'',
       affiliated:'',
-      mobileno:''
+      mobileno:'',
+      errors:{}
     };
 
 
@@ -22,8 +24,14 @@ class University extends Component {
   }
 
 
+  componentWillReceiveProps(nextProps){
+    if(nextProps.errors){
+      this.setState({errors:nextProps.errors})
+    }
+  }
+
   onSubmit(e){
-    // e.preventDefault();
+    e.preventDefault();
 
     const universityData ={
       university : this.state.university,
@@ -42,6 +50,9 @@ class University extends Component {
 
 
   render() {
+
+      const {errors} = this.state; 
+
     return (
       <div className="univesrity">
             <div className="conatiner-fluid">
@@ -54,14 +65,14 @@ class University extends Component {
                       name ="university"
                       value={this.state.university}
                       onChange ={this.onChange}
-                     
+                      error ={errors.university}
                     />
                   <TextFieldGroup
                       placeholder ="Email"
                       name ="email"
                       value={this.state.email}
                       onChange ={this.onChange}
-                     
+                      error={errors.email}
                     />
                      <TextFieldGroup
                       placeholder ="Description"
@@ -82,7 +93,7 @@ class University extends Component {
                       name ="mobileno"
                       value={this.state.mobileno}
                       onChange ={this.onChange}
-                    
+                      error={errors.mobileno}
                     />
                     <input type="submit" value="Create" className="btn btn-info btn-block mt-4"/>
                     </form>
@@ -95,5 +106,12 @@ class University extends Component {
 }
 
 
+University.propTypes ={
+  errors:PropTypes.object.isRequired
+}
 
-export default   connect(null,{createUniversity})(withRouter(University));
+const mapStateToProps = state => ({
+  errors:state.errors
+})
+
+export default   connect(mapStateToProps,{createUniversity})(withRouter(University));

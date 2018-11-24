@@ -1,7 +1,7 @@
 import React ,{Component} from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { deleteUniversity, updateUniversity } from '../../actions/universityActions';
 import TextFieldGroup from '../../components/common/TextFieldGroup';
 
@@ -38,7 +38,6 @@ class UniversitiesItem extends Component{
 
       onUpdate(e){
         // e.preventDefault();
-    
         const universityData ={
           university : this.state.university,
           email:this.state.email,
@@ -47,8 +46,6 @@ class UniversitiesItem extends Component{
           affiliated:this.state.affiliated,
           _id:this.state._id
         }
-        console.log(universityData)
-    
         this.props.updateUniversity(universityData,this.props.history);
       }
     
@@ -57,7 +54,6 @@ class UniversitiesItem extends Component{
       }
 
       componentDidMount() {
-        console.log(this.props.university);
         this.setState({
           university:this.props.university.name,
           email:this.props.university.email,

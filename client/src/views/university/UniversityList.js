@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {getUniversites } from '../../actions/universityActions';
 
 import UniversitiesItem from './UniversityItem';
 import University from './University';
+
+import UniversityFilter from './UniversityFilter';
 
 
 class UniversityList extends Component {
@@ -14,24 +15,42 @@ class UniversityList extends Component {
   constructor(props){
     super(props);
     this.state = {
-      universitities:''
+      universities:'',
+      universitiesList:[]
     };
+
+    this.handleSearchInput = this.handleSearchInput.bind(this); 
   }
 
   componentDidMount() {
     this.props.getUniversites();
+    this.setState({
+      universitiesList: this.props.universities.universities
+    });
+  }
+
+
+  handleSearchInput(e){
+    console.log(e.target.value);
+    var universitiesList = [];
+    if(this.state.universitiesList.length != null){
+      universitiesList = this.props.universities.universities;
+    } 
+    const list = UniversityFilter(universitiesList,e.target.value);
+
+    this.setState({
+      universitiesList: list
+    });
+  
   }
 
   render() {
     const { user } = this.props.auth;
-    const {universities} = this.props.universities;
-
-
 
     let dashboardContent,university;
 
-    if(universities != null){
-      university  = universities.map(university => (
+    if(this.state.universitiesList != null){
+      university  = this.state.universitiesList.map(university => (
        <UniversitiesItem key ={university._id} university = {university}/>
       ));
     }
@@ -49,7 +68,7 @@ class UniversityList extends Component {
             <div className="content-body">
                 <div className="row">
                   <div className="col-12 col-xl-9">     
-                  {/* <input className="filter form-control" onInput={this.handleSearchInput} type="text" placeholder="Search for University..."/> */}
+                  <input className="filter form-control" onInput={this.handleSearchInput} type="text" placeholder="Search for University..."/>
                     <div className="card">
                       <div className="cardbody">
                          <div className="list-group">

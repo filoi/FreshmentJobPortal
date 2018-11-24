@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
 import { loginUser } from '../../../actions/authActions'
 import { ReCAPTCHA } from "react-google-recaptcha";
+import TextFieldGroup from '../../../components/common/TextFieldGroup';
 
 
 class Login extends Component {
@@ -57,7 +58,7 @@ class Login extends Component {
 
   render() {
 
-      const {erros} = this.state
+      const {errors} = this.state
 
     return (
       <div className="app flex-row align-items-center">
@@ -78,7 +79,7 @@ class Login extends Component {
                                 <i className="icon-user"></i>
                               </InputGroupText>
                             </InputGroupAddon>
-                            <Input type="text" placeholder="Email"  name="email" type="email" value={this.state.email} onChange={this.onChange} autoComplete="Email" />
+                            <TextFieldGroup type="email" placeholder="Email Address"  name="email"  value={this.state.email} onChange={this.onChange} error={errors.email} autoComplete="Email" />
                           </InputGroup>
                           <InputGroup className="mb-4">
                             <InputGroupAddon addonType="prepend">
@@ -86,12 +87,12 @@ class Login extends Component {
                                 <i className="icon-lock"></i>
                               </InputGroupText>
                             </InputGroupAddon>
-                            <Input type="password" placeholder="Password" autoComplete="current-password" name="password" type="password" value={this.state.password} onChange={this.onChange} />
+                            <TextFieldGroup type="password" placeholder="Password" autoComplete="current-password" name="password" value={this.state.password} error={errors.password} onChange={this.onChange} />
                           </InputGroup>
                            <ReCAPTCHA
                             sitekey="6LcI4nsUAAAAAI8CBxP4mY_q5n6g0OVJuKnUPcVJ"/>
 
-                            <div class="g-recaptcha" data-sitekey="6LcI4nsUAAAAAI8CBxP4mY_q5n6g0OVJuKnUPcVJ"></div>
+                            <div className="g-recaptcha" data-sitekey="6LcI4nsUAAAAAI8CBxP4mY_q5n6g0OVJuKnUPcVJ"></div>
                           <Row className="my-2">
                             <Col xs="6">
                               <Button type="submit" className="btn btn-info btn-block" >Login</Button>
@@ -121,7 +122,7 @@ class Login extends Component {
               </Row>
             </Container>
             <footer className="bg-dark text-white text-center home-footer">
-              <span className="ml-auto">Developed by <a target="_blank" href="http://filoi.in">Filoi</a></span>
+              <span className="ml-auto">Developed by <a href="http://filoi.in">Filoi</a></span>
             </footer>
           </div>
       </div>
