@@ -42,7 +42,16 @@ class University extends Component {
     }
 
     this.props.createUniversity(universityData,this.props.history);
-  }
+
+    this.setState({
+      university:'',
+      email:'',
+      description:'',
+      affiliated:'',
+      mobileno:''
+      })
+
+}
 
   onChange(e){
     this.setState({[e.target.name]:e.target.value});

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {getUniversites } from '../../actions/universityActions';
+import { getUniversites } from '../../actions/universityActions';
 
 import UniversitiesItem from './UniversityItem';
 import University from './University';
@@ -10,7 +10,6 @@ import UniversityFilter from './UniversityFilter';
 
 
 class UniversityList extends Component {
-
 
   constructor(props){
     super(props);
@@ -23,7 +22,7 @@ class UniversityList extends Component {
   }
 
   componentDidMount() {
-    this.props.getUniversites();
+    // this.props.getUniversites();
     this.setState({
       universitiesList: this.props.universities.universities
     });
@@ -31,7 +30,6 @@ class UniversityList extends Component {
 
 
   handleSearchInput(e){
-    console.log(e.target.value);
     var universitiesList = [];
     if(this.state.universitiesList.length != null){
       universitiesList = this.props.universities.universities;

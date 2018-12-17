@@ -96,6 +96,8 @@ router.delete(
   );
 
 
+  
+
 //@route GET api/university/universityupdate
 //@desc Register route
 //@access Public

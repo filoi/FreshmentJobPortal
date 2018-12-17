@@ -1,7 +1,7 @@
 import React ,{Component} from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { deleteUniversity, updateUniversity } from '../../actions/universityActions';
 import TextFieldGroup from '../../components/common/TextFieldGroup';
 
@@ -33,11 +33,11 @@ class UniversitiesItem extends Component{
 
       onDeleteClick(e) {
         this.props.deleteUniversity(e);
+        window.location.reload(true);
       }
 
 
       onUpdate(e){
-        // e.preventDefault();
         const universityData ={
           university : this.state.university,
           email:this.state.email,
@@ -76,10 +76,14 @@ class UniversitiesItem extends Component{
              <i className="fa fas fa-graduation-cap bg-info p-2 font-1xl mr-1 float-left"></i>
                      {university.name} | {university.email} | {university.mobileno} 
 
-            <span className="badge">  <Button color="primary" onClick={this.toggle}>Edit</Button>
-            <button onClick={this.onDeleteClick.bind(this,university._id)} className="btn btn-danger m-2">
-              Delete
-            </button>
+            <span className="badge">
+                <a className="btn btn-primary mr-2"  onClick={this.toggle} aria-label="Skip to main navigation">
+                    <i className="fa fa-pencil" aria-hidden="true"></i>
+                </a>
+               
+                 <a className="btn btn-danger" onClick={this.onDeleteClick.bind(this,university._id)} aria-label="Delete">
+                       <i className ="fa fa-trash-o" aria-hidden="true"></i>
+                  </a>
             </span>
 
           

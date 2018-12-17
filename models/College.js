@@ -14,6 +14,22 @@ const CollegeSchema = new Schema({
         type: String,
         required: true,
     },
+    code:{
+        type:String,
+        required:true,
+    },
+    year:{
+        type:String,
+        required:true
+    },
+    value:{
+        type:Array,
+        required:true
+    },
+    universityaff:{
+        type:String,
+        required:true
+    },
     date: {
         type: Date,
         default: Date.now

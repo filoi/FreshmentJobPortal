@@ -1,5 +1,5 @@
 import{
-    GET_COLLEGES
+    GET_COLLEGES,DELETE_COLLEGE
 } from '../actions/types';
 
 
@@ -15,6 +15,11 @@ export default function (state= initalState,action){
             ...state,
             colleges:action.payload
         }
+        case DELETE_COLLEGE:
+        return {
+          ...state,
+          colleges: state.colleges.filter(college => college._id !== action.payload)
+        }        
         default:
         return state;
     }

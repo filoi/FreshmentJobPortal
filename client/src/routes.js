@@ -21,6 +21,12 @@ const university = Loadable({
 
 
 const college = Loadable({
+  loader:() => import('./views/college/collegeList'),
+  loading: Loading
+})
+
+
+const newcollege = Loadable({
   loader:() => import('./views/college/college'),
   loading: Loading
 })
@@ -38,6 +44,7 @@ const routes = [
   { path: '/main/dashboard', exact: true, name: 'Dashboard', component: Dashboard },
   { path: '/main/universities', exact: true, name: 'Universities', component: university},
   { path: '/main/college', exact: true, name: 'College', component: college },
+  { path: '/main/newcollege', exact: true, name: 'College', component: newcollege },
   { path: '/main/courses', exact: true, name: 'Courses', component: courses }
 ];
 

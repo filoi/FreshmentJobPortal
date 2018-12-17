@@ -4,7 +4,6 @@ import { GET_ERRORS,GET_UNIVERSITIES,DELETE_UNIVERSITY } from './types';
 
 // Register University
 export const createUniversity = (userData, history) => dispatch => {
-    console.log(userData)
   axios
     .post('/api/university/universityregister', userData)
     .then(res => history.push('/main/universities'))
@@ -43,9 +42,7 @@ export  const getUniversites = () => dispatch => {
 
 
 // Delete Post
-export const deleteUniversity = id => dispatch => {
-
-    console.log(id)
+export const deleteUniversity = (id) => dispatch => {
   axios
     .delete(`/api/university/${id}`)
     .then(res =>
@@ -67,7 +64,6 @@ export const deleteUniversity = id => dispatch => {
 
 // update University
 export const updateUniversity = (university, history) => dispatch => {
-  console.log(university)
 axios
   .post('/api/university/universityupdate', university)
   .then(res => history.push('/main/universities'))
