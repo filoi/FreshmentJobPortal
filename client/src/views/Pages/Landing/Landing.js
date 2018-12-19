@@ -13,6 +13,9 @@ class Landing extends Component {
   render() {
     return (
       <div className="container-fluid">
+        <div className="header navbar">
+          hello
+        </div>
         <div className="landing"></div>
         <div className="dark-overlay landing-inner text-light">
             <div className="row">
@@ -35,7 +38,7 @@ class Landing extends Component {
           </div>
         </div>
         <footer className="bg-dark text-white text-center home-footer">
-          <span className="ml-auto">Developed by <a  href="http://filoi.in">Filoi</a></span>
+          <span className="ml-auto">Developed by <a target="_blank" href="http://filoi.in">Filoi</a> About | Contact Us | Our Services</span>
         </footer>
       </div>
     );

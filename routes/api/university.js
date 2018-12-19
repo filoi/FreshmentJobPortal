@@ -10,7 +10,7 @@ const University = require('../../models/University');
 //@route GET api/university/register
 //@desc Register route
 //@access Public
-router.post('/universityregister', (req, res) => {
+router.post('/register', (req, res) => {
     console.log(req.body);
     const {
         errors,
@@ -82,7 +82,7 @@ router.get('/all', (req, res) => {
 // @access  Private
 router.delete(
     '/:id',
-    passport.authenticate('jwt', { session: false }),
+   // passport.authenticate('jwt', { session: false }),
     (req, res) => {
         console.log(req.params.id)
       University.findById(req.params.id).then(university => {
@@ -96,12 +96,12 @@ router.delete(
   );
 
 
-  
+
 
 //@route GET api/university/universityupdate
 //@desc Register route
 //@access Public
-router.post('/universityupdate', (req, res) => {
+router.post('/update', (req, res) => {
     console.log(req.body);
     const {
         errors,
@@ -140,6 +140,33 @@ console.log(universityFields)
             }
         })
 })
+
+//@route GET api/university/edit
+//@desc Register route
+//@access Public
+router.get('/:id', (req, res) => {
+
+    University.findById(req.params.id)
+    .then(university => {
+        if(!university) {
+            return res.status(404).send({
+                message: "university not found "
+            });            
+        }
+        res.send(university);
+    }).catch(err => {
+        if(err.kind === 'ObjectId') {
+            return res.status(404).send({
+                message: "university not found "
+            });                
+        }
+        return res.status(500).send({
+            message: "Error retrieving university "
+        });
+    });
+})
+
+
 
 
 

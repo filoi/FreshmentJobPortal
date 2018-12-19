@@ -5,19 +5,23 @@ module.exports = function validateCollegeInput(data) {
     console.log(data)
     let errors = {};
 
-    data.college = !isEmpty(data.college) ? data.college : '';
+    data.name = !isEmpty(data.name) ? data.name : '';
     data.email = !isEmpty(data.email) ? data.email : '';
     data.mobilen = !isEmpty(data.mobile) ? data.mobileno : '';
+    data.university_id = !isEmpty(data.university_id) ? data.university_id : '';
+    data.year = !isEmpty(data.year) ? data.year : '';
+    data.code = !isEmpty(data.code) ? data.code : '';
 
-    if (!Validator.isLength(data.college, {
+
+    if (!Validator.isLength(data.name, {
             min: 2,
             max: 30
         })) {
-        errors.college = 'Name must be between 2 and 30 characters';
+        errors.name = 'Name must be between 2 and 30 characters';
     }
 
-    if (Validator.isEmpty(data.college)) {
-        errors.college = 'Name Feild is Required';
+    if (Validator.isEmpty(data.name)) {
+        errors.name = 'Name Feild is Required';
     }
 
     if (Validator.isEmpty(data.email)) {
@@ -30,6 +34,18 @@ module.exports = function validateCollegeInput(data) {
 
     if (Validator.isEmpty(data.mobileno)) {
         errors.mobileno = 'Mobile No Feild is Required';
+    }
+
+    if (Validator.isEmpty(data.university_id)) {
+        errors.university_id = 'University_id Feild is Required';
+    }
+
+    if (Validator.isEmpty(data.year)) {
+        errors.year = 'Year Feild is Required';
+    }
+
+    if (Validator.isEmpty(data.code)) {
+        errors.code = 'Code Feild is Required';
     }
 
     if (!Validator.isLength(data.mobileno,{

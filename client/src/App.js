@@ -11,6 +11,7 @@ import store from './store';
 
 
 import './App.scss';
+import './style.css';
 
 // Containers
 import { DefaultLayout } from './containers';

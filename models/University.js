@@ -7,7 +7,7 @@ const UniversitySchema = new Schema({
         required: true
     },
     mobileno: {
-        type: String,
+        type: Number,
         required: true
     },
     email: {
@@ -16,11 +16,15 @@ const UniversitySchema = new Schema({
     },
     description:{
         type:String,
-        required:true
+        required:false
     },
     affiliated:{
         type:String,
         required:true
+    },
+    status:{
+        type:String,
+        required:false
     },
     date: {
         type: Date,
@@ -28,4 +32,4 @@ const UniversitySchema = new Schema({
     }
 });
 
-module.exports = University = mongoose.model('university', UniversitySchema);
+module.exports = University = mongoose.model('University', UniversitySchema);

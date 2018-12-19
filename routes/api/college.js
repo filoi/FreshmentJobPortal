@@ -5,12 +5,10 @@ const passport = require('passport');
 const validateCollegeInput = require('../../validation/college');
 const College = require('../../models/College');
 
-
-
 //@route GET api/college/register
 //@desc Register route
 //@access Public
-router.post('/collegeregister', (req, res) => {
+router.post('/register', (req, res) => {
     console.log(req.body);
     const {
         errors,
@@ -33,13 +31,13 @@ router.post('/collegeregister', (req, res) => {
                 });
             } else {
                 const newCollege = new College({
-                    name: req.body.college,
+                    name: req.body.name,
                     email: req.body.email,
                     mobileno:req.body.mobileno,
                     code:req.body.code,
                     year:req.body.year,
-                    value:req.body.value,
-                    universityaff:req.body.universityaff
+                    //value:req.body.value,
+                    university_id:req.body.university_id
                 });
 
 
@@ -61,17 +59,27 @@ router.get('/all', (req, res) => {
     const errors = {};
 
     College.find()
-        .then(college => {
-            if (!college) {
-                errors.noprofiles = 'No College exist';
-                return res.status(404).json(errors);
-            }
+	.populate('university_id')
+    .then(agendas => {
+        res.send(agendas);
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message || "Some error occurred while retrieving agenda."
+        });
+    });
 
-            res.json(college);
-        })
-        .catch(err => res.status(404).json({
-            college : 'college Dosent exits'
-        }));
+    // College.find()
+    //     .then(college => {
+    //         if (!college) {
+    //             errors.noprofiles = 'No College exist';
+    //             return res.status(404).json(errors);
+    //         }
+
+    //         res.json(college);
+    //     })
+    //     .catch(err => res.status(404).json({
+    //         college : 'college Dosent exits'
+    //     }));
 })
 
 
@@ -80,7 +88,7 @@ router.get('/all', (req, res) => {
 // @access  Private
 router.delete(
     '/:id',
-    passport.authenticate('jwt', { session: false }),
+    //passport.authenticate('jwt', { session: false }),
     (req, res) => {
         console.log(req.params.id)
       College.findById(req.params.id).then(college => {
@@ -98,25 +106,25 @@ router.delete(
   //@route GET api/university/universityupdate
 //@desc Register route
 //@access Public
-router.post('/collegeupdate', (req, res) => {
+router.post('/update', (req, res) => {
 
     console.log(req.body)
 
      // Get fields
      const collegeFields = {};
-     if (req.body.college) collegeFields.name = req.body.college;
+     if (req.body.name) collegeFields.name = req.body.name;
      if (req.body.email) collegeFields.email = req.body.email;
      if (req.body.mobileno) collegeFields.mobileno = req.body.mobileno;
      if (req.body.year) collegeFields.year = req.body.year;
      if (req.body.code) collegeFields.code = req.body.code;
-     if (req.body.universityaff) collegeFields.universityaff = req.body.universityaff;
-     if (req.body.value) collegeFields.value = req.body.value;
+     //if (req.body.universityaff) collegeFields.universityaff = req.body.universityaff;
+     if (req.body.university_id) collegeFields.university_id = req.body.university_id;
 
 
      console.log(req.body._id)
      console.log(collegeFields)
 
-    College.findOneAndUpdate({
+    College.findOne({
             _id: req.body._id
         })
         .then(college => {
@@ -132,6 +140,31 @@ router.post('/collegeupdate', (req, res) => {
                 console.log('College Doesnoy Exits')
             }
         })
+})
+
+//@route GET api/university/edit
+//@desc Register route
+//@access Public
+router.get('/:id', (req, res) => {
+
+    College.findById(req.params.id)
+    .then(university => {
+        if(!university) {
+            return res.status(404).send({
+                message: "university not found "
+            });            
+        }
+        res.send(university);
+    }).catch(err => {
+        if(err.kind === 'ObjectId') {
+            return res.status(404).send({
+                message: "university not found "
+            });                
+        }
+        return res.status(500).send({
+            message: "Error retrieving university "
+        });
+    });
 })
 
 

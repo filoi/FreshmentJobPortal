@@ -21,7 +21,17 @@ export default {
     },
     {
       name:'Courses',
-      url:'/main/courses',
+      url:'/main/course',
+      icon:'icon-book-open' 
+    },
+	  {
+      name:'Subjects',
+      url:'/main/subject',
+      icon:'icon-book-open'
+    },
+	  {
+      name:'Subject Categories',
+      url:'/main/subjectcategory',
       icon:'icon-book-open'
     }
   ],

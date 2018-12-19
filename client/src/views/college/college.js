@@ -1,195 +1,110 @@
 import React, { Component } from 'react';
 import TextFieldGroup from '../../components/common/TextFieldGroup';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { createCollege } from '../../actions/collegeActions';
-import MultiselectTwoSides  from '../../components/multiselect';
-import { getCourses } from '../../actions/courseActions';
-import  Select  from 'react-select';
-import {getUniversites } from '../../actions/universityActions';
-
-require('./college.css');
+import { createUniversity } from '../../actions/universityActions';
 
 
-
-class College extends Component {
+class University extends Component {
   constructor(props){
     super(props);
     this.state = {
-      college:'',
+      university:'',
       email:'',
+      description:'',
+      affiliated:'',
       mobileno:'',
-      year:'',
-      code:'',
-      value: [],
-      highlight: [],
-      settings:[{
-        label: 'Show controls',
-        name: 'showControls',
-        value: true
-      },
-      {
-        label: 'Searchable',
-        name: 'searchable',
-        value: true
-      },
-      {
-        label: 'Clearable',
-        name: 'clearable',
-        value: true
-      },
-      {
-        label: 'Disabled',
-        name: 'disabled',
-        value: false
-      },
-      {
-        label: 'Limit',
-        name: 'limit',
-        value: 50
-      }],
-      courses:{},
-      universityaff: null,
+      errors:{}
     };
 
 
     this.onChange = this.onChange.bind(this); 
     this.onSubmit = this.onSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
   }
 
 
-  componentDidMount() {
-    this.props.getCourses();
-    this.props.getUniversites();
+  componentWillReceiveProps(nextProps){
+    if(nextProps.errors){
+      this.setState({errors:nextProps.errors})
+    }
   }
-
-
 
   onSubmit(e){
     e.preventDefault();
-    const collegeData ={
-      college : this.state.college,
+
+    const universityData ={
+      university : this.state.university,
       email:this.state.email,
       mobileno:this.state.mobileno,
-      value:this.state.value,
-      code:this.state.code,
-      year:this.state.year,
-      value:this.state.value,
-      universityaff:this.state.universityaff.value
+      description:this.state.description,
+      affiliated:this.state.affiliated
     }
-    console.log(collegeData)
-    this.props.createCollege(collegeData,this.props.history);
-  }
+
+    this.props.createUniversity(universityData,this.props.history);
+
+    this.setState({
+      university:'',
+      email:'',
+      description:'',
+      affiliated:'',
+      mobileno:''
+      })
+
+}
 
   onChange(e){
     this.setState({[e.target.name]:e.target.value});
   }
 
 
-//Code for two side multiselect
-
-  handleChange(value) {
-    this.setState({value});
-    console.log(this.state.value);
-	}
-
-  handleChangeList = (universityaff) => {
-    this.setState({ universityaff });
-    console.log(`Option selected:`, universityaff);
-  }
-
-
   render() {
-    const {courses} = this.props.courses;
-    const { universityaff } = this.state;
-    const {universities} = this.props.universities;
 
-  
-    var options=[];
-    var UniversityList =[];
-    
-    if(courses != null){
-      courses.map((course)=> options.push({label:course.name,value:course._id}));
-    }
-   
-    if(universities!=null){
-        universities.map((university)=>UniversityList.push({value:university._id,label:university.name}))
-    }
-  
-
-    const {
-			highlight,
-			settings,
-			value
-		} = this.state;
-		const selectedCount = value.length;
-		const availableCount = options.length - selectedCount;
-		const s = settings.reduce((a, b) => {
-			a[b.name] = b.value;
-			return a;
-		}, {});
+      const {errors} = this.state; 
 
     return (
       <div className="univesrity">
             <div className="conatiner-fluid">
-              <div className="row">
-                   <div className="col-md-8 m-auto">
-                    <h1 className="display-4 text-center">Create New College</h1>
+              <div className="row p-2">
+                   <div className="col-md-12 m-auto">
+                    <h5 className="display-5 text-center">Create New University</h5>
                     <form onSubmit={this.onSubmit}>
                     <TextFieldGroup
-                      placeholder ="College Name"
-                      name ="college"
-                      value={this.state.college}
+                      placeholder ="University Name"
+                      name ="university"
+                      value={this.state.university}
                       onChange ={this.onChange}
+                      error ={errors.university}
                     />
                   <TextFieldGroup
                       placeholder ="Email"
                       name ="email"
                       value={this.state.email}
                       onChange ={this.onChange}
+                      error={errors.email}
+                    />
+                     <TextFieldGroup
+                      placeholder ="Description"
+                      name ="description"
+                      value={this.state.description}
+                      onChange ={this.onChange}
+                     
+                    />
+                     <TextFieldGroup
+                      placeholder ="Affiliated From"
+                      name ="affiliated"
+                      value={this.state.affiliated}
+                      onChange ={this.onChange}
+                     
                     />
                     <TextFieldGroup
                       placeholder ="Mobile No"
                       name ="mobileno"
                       value={this.state.mobileno}
                       onChange ={this.onChange}
-                    /> 
-                    <TextFieldGroup
-                      placeholder ="Year of Establishment"
-                      name ="year"
-                      value={this.state.year}
-                      onChange ={this.onChange}
-                    /> 
-                    <TextFieldGroup
-                      placeholder ="College Code"
-                      name ="code"
-                      value={this.state.code}
-                      onChange ={this.onChange}
-                    /> 
-                   <Select
-                        value={universityaff}
-                        onChange={this.handleChangeList}
-                        options={UniversityList}
-                        placeholder="Please select University..."
+                      error={errors.mobileno}
                     />
-              <div>
-			        	<MultiselectTwoSides
-			          		className="msts_theme_example"
-			          		availableHeader="Available"
-			          		availableFooter={`Available: ${availableCount}`}
-			          		selectedHeader="Selected"
-		          			selectedFooter={`Selected: ${selectedCount}`}
-			          		placeholder="Filter…"
-			          		options={options}
-				          	highlight={highlight}
-					          value={value}
-					          onChange={this.handleChange}
-				          	{...s}
-				          />
-			        </div>
-                
-                    <input type="submit" value="submit" className="btn btn-info btn-block mt-4"/>
+                    <input type="submit" value="Create" className="btn btn-info btn-block mt-4"/>
                     </form>
                   </div>
              </div>
@@ -199,11 +114,13 @@ class College extends Component {
   }
 }
 
+
+University.propTypes ={
+  errors:PropTypes.object.isRequired
+}
+
 const mapStateToProps = state => ({
-  errors:state.errors,
-  courses:state.courses,
-  universities:state.universities
+  errors:state.errors
 })
 
-
-export default   connect(mapStateToProps,{createCollege,getCourses,getUniversites})(withRouter(College));
+export default   connect(mapStateToProps,{createUniversity})(withRouter(University));

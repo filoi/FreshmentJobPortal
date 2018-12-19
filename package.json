@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "client-install": "npm install --prefix client",
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
@@ -29,6 +29,6 @@
     "validator": "^10.8.0"
   },
   "devDependencies": {
-    "nodemon": "^1.18.5"
+    "nodemon": "^1.18.9"
   }
 }

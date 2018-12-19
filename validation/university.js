@@ -32,9 +32,13 @@ module.exports = function validateUniversityInput(data) {
         errors.mobileno = 'Mobile No field is Required';
     }
 
+    if (Validator.isEmpty(data.affiliated)) {
+        errors.affiliated = 'Affiliated field is Required';
+    }
+
     if (!Validator.isLength(data.mobileno,{
-        min:10,
-        max:10
+        min:9,
+        max:12
     })) {
         errors.mobileno = 'Please enter 10 digit mobile number';
     }

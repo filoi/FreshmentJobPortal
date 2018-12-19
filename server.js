@@ -3,15 +3,16 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 
-
 const serverConfig = require('./config/keys');
 const users = require('./routes/api/users');
 const enrollment = require('./routes/api/enrollment');
 const university = require('./routes/api/university');
 const college = require('./routes/api/college');
 const course = require('./routes/api/course');
-
-
+const subject = require('./routes/api/subject');
+const sub_cat = require('./routes/api/sub_cat');
+const college_course = require('./routes/api/college_course');
+const course_subject = require('./routes/api/course_subject');
 
 const app = express();
 
@@ -40,6 +41,11 @@ app.use('/api/enrollment',enrollment);
 app.use('/api/university',university);
 app.use('/api/college',college);
 app.use('/api/course',course);
+app.use('/api/subject',subject);
+app.use('/api/sub_cat',sub_cat);
+app.use('/api/college_course',college_course);
+app.use('/api/course_subject',course_subject);
+
 
 
 const port  = process.env.PORT || 5000;

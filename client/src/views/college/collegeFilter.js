@@ -1,6 +1,6 @@
-export default (colleges,text) => {
-    return colleges.filter(college => {
-        const  textMatch = college.name.toLowerCase().includes(text.toLowerCase());
+export default (Universities,text) => {
+    return Universities.filter(university => {
+        const  textMatch = university.name.toLowerCase().includes(text.toLowerCase());
         return textMatch; 
     })
 }
