@@ -50,18 +50,18 @@ const editcollege = Loadable({
 })
 
 const course = Loadable({
-  loader:() => import('./views/course/CourseList'),
+  loader:() => import('./views/Course/CourseList'),
   loading: Loading
 })
 
 const addcourse = Loadable({
-  loader:() => import('./views/course/AddCourse'),
+  loader:() => import('./views/Course/AddCourse'),
   loading: Loading
 })
 
 
 const editcourse = Loadable({
-  loader:() => import('./views/course/EditCourse'),
+  loader:() => import('./views/Course/EditCourse'),
   loading: Loading
 })
 

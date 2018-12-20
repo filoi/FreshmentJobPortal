@@ -38,7 +38,7 @@ class Landing extends Component {
           </div>
         </div>
         <footer className="bg-dark text-white text-center home-footer">
-          <span className="ml-auto">Developed by <a target="_blank" href="http://filoi.in">Filoi</a> About | Contact Us | Our Services</span>
+          <span className="ml-auto">Developed by <a target="_blank" href="http://filoi.in">Filoi</a> | <Link to='./about'>About</Link> | <Link to='./contact'>Contact Us</Link> | <Link to='./services'>Our Services</Link> </span>
         </footer>
       </div>
     );

@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
-const TextFieldGroup = ({
+const TextFieldGroupMobile = ({
   name,
   placeholder,
   value,
@@ -13,7 +13,7 @@ const TextFieldGroup = ({
   disabled
 }) => {
   return (
-    <span>
+    <span style={{width:'77%'}}>
       <input
         type={type}
         className={classnames('form-control form-control-lg', {
@@ -32,7 +32,7 @@ const TextFieldGroup = ({
   );
 };
 
-TextFieldGroup.propTypes = {
+TextFieldGroupMobile.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   value: PropTypes.string.isRequired,
@@ -43,8 +43,8 @@ TextFieldGroup.propTypes = {
   disabled: PropTypes.string
 };
 
-TextFieldGroup.defaultProps = {
+TextFieldGroupMobile.defaultProps = {
   type: 'text'
 };
 
-export default TextFieldGroup;
+export default TextFieldGroupMobile;

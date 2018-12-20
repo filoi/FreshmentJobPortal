@@ -16,7 +16,7 @@ import './style.css';
 // Containers
 import { DefaultLayout } from './containers';
 // Pages
-import { Landing, Login, Page404, Page500, Register,Email } from './views/Pages';
+import { Landing, Login, Page404, Page500, Register,Email,About,Contact,Service } from './views/Pages';
 
 
 // Check for token
@@ -54,6 +54,9 @@ class App extends Component {
                 <Route exact path="/404" name="Page 404" component={Page404} />
                 <Route exact path="/500" name="Page 500" component={Page500} />
                 <Route exact path="/email" name="Page 500" component={Email} />
+                <Route exact path="/about" name="About Us" component={About} />
+                <Route exact path="/contact" name="Contact Us" component={Contact} />
+                <Route exact path="/services" name="Services" component={Service} />
                   <Switch>
                       <PrivateRoute path="/main" name="Home" component={DefaultLayout} />
                   </Switch>

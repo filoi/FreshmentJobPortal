@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { enrollStudent } from '../../../actions/authActions';
 import TextFieldGroup from '../../../components/common/TextFieldGroup';
+import TextFieldGroupMobile from '../../../components/common/TextFieldGroupMobile';
 import SelectListGroup from '../../../components/common/SelectListGroup';
 
 class Register extends Component {
@@ -12,6 +13,7 @@ class Register extends Component {
     super();
     this.state = {
       name: '',
+      lastname:'',
       email: '',
       mobileno:'',
       college: '',
@@ -43,7 +45,7 @@ class Register extends Component {
     e.preventDefault();
 
     const newUser = {
-      name: this.state.name,
+      name: this.state.name + this.state.lastname,
       email: this.state.email,
       mobileno: this.state.mobileno,
       college: this.state.college,
@@ -83,13 +85,30 @@ class Register extends Component {
             <div className="col-md-4 m-auto glassy">
               <h1 style={{ textAlign: 'center' }}><b>Student Enrollment</b></h1>
               <form noValidate onSubmit={this.onSubmit}>
-                <TextFieldGroup
-                  placeholder="Name"
-                  name="name"
-                  value={this.state.name}
-                  onChange={this.onChange}
-                  error={errors.name}
-                />
+                 <div className="row">
+			            	<div className="col-xs-12 col-sm-6 col-md-6">
+			            		<div className="form-group">
+                         <TextFieldGroup
+                            placeholder="First Name"
+                            name="name"
+                            value={this.state.name}
+                            onChange={this.onChange}
+                            error={errors.name}
+                             />
+				              	</div>
+				             </div>
+			              	<div className="col-xs-12 col-sm-6 col-md-6">
+			                		<div className="form-group">
+                              <TextFieldGroup
+                               placeholder="Last Name"
+                               name="lastname"
+                               value={this.state.lastname}
+                               onChange={this.onChange}
+                               error={errors.name}
+                            />
+				            	</div>
+			          	</div>
+		          	</div>
                 <TextFieldGroup
                   placeholder="Email"
                   name="email"
@@ -98,14 +117,21 @@ class Register extends Component {
                   onChange={this.onChange}
                   error={errors.email}
                 />
-                 <TextFieldGroup
-                  placeholder="Mobile No."
-                  name="mobileno"
-                  type="text"
-                  value={this.state.mobileno}
-                  onChange={this.onChange}
-                  error={errors.mobileno}
-                />
+
+              <div className="form-group input-group pb-2 pt-2">
+                    <div className="input-group-prepend">
+		                        <span className="input-group-text"> +91</span>
+		                 </div>
+                        <TextFieldGroupMobile
+                              placeholder="Mobile No."
+                              name="mobileno"
+                              type="text"
+                              value={this.state.mobileno}
+                              onChange={this.onChange}
+                              error={errors.mobileno}
+                         />
+             </div>
+                 
                 <SelectListGroup
                   placeholder="college"
                   name="college"
